@@ -3,4 +3,6 @@ mod chapter04;
 
 fn main() {
     println!("Hello, world!");
+    println!("Its work")
 }
+

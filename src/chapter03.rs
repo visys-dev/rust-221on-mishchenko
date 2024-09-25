@@ -74,6 +74,7 @@ fn test6() {
     x += 3;
 
     let y = 4;
+    println!("{}", y);
     // Shadowing
     let y = "I can also be bound to text!";
 

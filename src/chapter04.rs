@@ -50,3 +50,27 @@ fn test5() {
     let v2 = i8::checked_add(119, 8).unwrap();
     println!("{} it's a MAX of u8, {} it's a MAX of i8", v1, v2);
 }
+
+#[test]
+// Modify `assert!` to make it work
+fn test6() {
+    let v = 1_024 + 0xff + 0o77 + 0b1111_1111; //1_024 = 1024, 0xff = 255, 0o77 = 63, 0b1111_1111 = 255
+    assert!(v == 1597);
+
+    println!("Success!");
+}
+
+// #[test]
+// // Fill the blank to make it work
+// fn test7() {
+//     let x = 1_000.000_1; // f64
+//     let y: f32 = 0.12; // f32
+//     let z = 0.01_f64; // f64
+//
+//     assert_eq!(type_of(&x), "f64".to_string());
+//     println!("Success!");
+// }
+//
+// fn type_of<T>(_: &T) -> String {
+//     format!("{}", std::any::type_name::<T>())
+// }

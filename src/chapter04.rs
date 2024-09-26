@@ -181,7 +181,6 @@ fn test_char_03() {
 }
 
 #[test]
-
 // Make it work
 fn test_char_04() {
     let f = true;
@@ -192,7 +191,6 @@ fn test_char_04() {
 }
 
 #[test]
-
 // Make it work, don't modify `implicitly_ret_unit` !
 fn test_char_05() {
     let _v: () = ();
@@ -220,4 +218,146 @@ fn test_char_06() {
     assert!(size_of_val(&unit) == 0); // () об'єкт - не займає пам'ять
 
     println!("Success! test_char_06 ");
+}
+
+//Statements and Expressions
+#[test]
+// Make it work with two ways
+fn test_statements_and_expressions_01_1() {
+    let v = {
+        let mut x = 1;
+        x += 2;
+        x // Повертаємо x
+    };
+
+    assert_eq!(v, 3);
+
+    println!("Success! test_statements_and_expressions_01_1");
+}
+
+#[test]
+fn test_statements_and_expressions_01_2() {
+    let v = {
+        let mut x = 1;
+        x += 2
+    }; // Повертаємо () (unit) тому і порівнюємо з ()
+
+    assert_eq!(v, ());
+
+    println!("Success! test_statements_and_expressions_01_2");
+}
+
+#[test]
+fn test_statements_and_expressions_02() {
+    let v = {
+        let x = 3;
+        x
+    };
+
+    assert!(v == 3);
+
+    println!("Success! test_statements_and_expressions_02");
+}
+
+#[test]
+
+fn test_statements_and_expressions_03() {
+    let s = sum_02(1, 2);
+    assert_eq!(s, 3);
+
+    println!("Success! test_statements_and_expressions_03");
+}
+
+fn sum_01(x: i32, y: i32) -> i32 {
+    let result = x + y; // x + y; повертає (), без ';' повертає математичне значення
+    result
+}
+
+fn sum_02(x: i32, y: i32) -> i32 {
+    x + y
+}
+
+//Function
+#[test]
+
+fn test_fn_01() {
+    // Don't modify the following two lines!
+    let (x, y) = (1, 2);
+    let s = sum_01(x, y);
+
+    assert_eq!(s, 3);
+
+    println!("Success! test_fn_01");
+}
+
+fn sum_fn_01(x: i32, y: i32) {
+    x + y;
+}
+
+#[test]
+fn test_fn_02() {
+    print();
+}
+
+// Replace i32 with another type
+fn print() -> () {
+    println!("Success! test_fn_02");
+}
+
+// #[test]
+// TODO: розібратись з цим
+// Solve it in two ways
+// DON'T let `println!` work
+// fn test_fn_03() {
+//     never_return_fn_03();
+//
+//     println!("Failed!");
+// }
+//
+// fn never_return_fn_03() -> ! {
+//     // Implement this function, don't modify the fn signatures
+//     None
+// }
+
+#[test]
+fn test_fn_04() {
+    println!("Success! test_fn_04");
+}
+
+fn get_option_fn_04(tp: u8) -> Option<i32> {
+    match tp {
+        1 => {
+        }
+        _ => {
+        }
+    };
+
+    // Rather than returning a None, we use a diverging function instead
+    never_return_fn_04()
+}
+
+// IMPLEMENT this function in THREE ways
+fn never_return_fn_04() -> ! {
+    loop {
+        std::thread::sleep(std::time::Duration::from_secs(1))
+    }
+}
+
+
+#[test]
+
+fn test_fn_05() {
+    // FILL in the blank
+    let b = false;
+
+    let _v = match b {
+        true => 1,
+        // Diverging functions can also be used in match expression to replace a value of any value
+        false => {
+            println!("Success! test_fn_05");
+            panic!("we have no value for `false`, but we can panic");
+        }
+    };
+
+    println!("Exercise Failed if printing out this line!");
 }

@@ -1,10 +1,11 @@
+//Numbers
 #[test]
-fn test() {
+fn test_numbers() {
     assert_eq!(2 + 3, 5);
 }
 
 #[test]
-fn test1() {
+fn test_01() {
     let x: i32 = 5; // Uninitialized but used, ERROR !
     let _y: i32; // Uninitialized but also unused, only a Warning !
 
@@ -14,7 +15,7 @@ fn test1() {
 
 #[test]
 // Fill the blanks in the code to make it compile
-fn test2() {
+fn test_02() {
     let mut x = 1;
     x += 2;
 
@@ -24,7 +25,7 @@ fn test2() {
 
 // Fix the error below with least amount of modification
 #[test]
-fn test3() {
+fn test_03() {
     let x: i32 = 10;
     let y: i32; // Оголошення змінної поза блоком
     {
@@ -36,7 +37,7 @@ fn test3() {
 
 // Fix the error with the use of define_x
 #[test]
-fn test4() {
+fn test_04() {
     let x = define_x(); // Викликаємо фунцію
     println!(
         "{} world, {}",
@@ -52,7 +53,7 @@ fn define_x() -> &'static str // Вказуємо, що функція пове�
 
 #[test]
 // Only modify `assert_eq!` to make the `println!` work(print `42` in terminal)
-fn test5() {
+fn test_05() {
     let x: i32 = 5;
     {
         let x = 12;
@@ -67,7 +68,7 @@ fn test5() {
 
 #[test]
 // Remove a line in the code to make it compile
-fn test6() {
+fn test_06() {
     let mut x: i32 = 1;
     x = 7;
     // Shadowing and re-binding
@@ -84,14 +85,14 @@ fn test6() {
 
 #[test]
 // Warning: unused variable: `x`
-fn test7() {
+fn test_07() {
     let x = 1;
     println!("{}", x); // Використовуємо змінну x
 }
 
 #[test]
 // Fix the error below with least amount of modification
-fn test8() {
+fn test_08() {
     let (mut x, y) = (1, 2); // Додаємо mut, щоб значення х можна було змінним
     x += 2;
 
@@ -102,7 +103,7 @@ fn test8() {
 }
 
 #[test]
-fn test9() {
+fn test_09() {
     let (x, y);
     (x, ..) = (3, 4);
     [.., y] = [1, 2];
@@ -111,3 +112,5 @@ fn test9() {
 
     println!("Success!");
 }
+
+

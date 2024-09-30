@@ -86,3 +86,69 @@ fn test_ownership_06() {
     println!("Success! test_ownership_06");
 }
 
+#[test]
+fn test_ownership_07() {
+    let x = Box::new(5);
+
+    let mut y = Box::new(6); // update this line, don't change other lines!
+
+    *y = 4;
+
+    assert_eq!(*x, 5);
+
+    println!("Success! test_ownership_07");
+}
+
+#[test]
+fn test_ownership_08() {
+    let t = (String::from("hello"), String::from("world"));
+
+    let _s = t.0;
+
+    // Modify this line only, don't use `_s`
+    println!("{:?}", t.1);
+}
+
+#[test]
+
+fn test_ownership_09() {
+    let t = (String::from("hello"), String::from("world"));
+
+    // Fill the blanks
+    let (s1, s2) = t.clone();
+
+    println!("{:?}, {:?}, {:?}", s1, s2, t); // -> "hello", "world", ("hello", "world")
+}
+
+//Reference and Borrowing
+#[test]
+fn test_borrowing_01() {
+    let x = 5;
+    // Fill the blank
+    let p = &x;
+
+    println!("the memory address of x is {:p} test_borrowing_01", p); // One possible output: 0x16fa3ac84
+}
+
+#[test]
+fn test_borrowing_02() {
+    let x = 5;
+    let y = &x;
+
+    // Modify this line only
+    assert_eq!(5, *y);
+
+    println!("Success! test_borrowing_01");
+}
+
+#[test]
+// Fix error
+fn test_borrowing_03() {
+    let mut s = String::from("hello, ");
+
+    borrow_object_test_03(&s);
+
+    println!("Success! test_borrowing_03");
+}
+
+fn borrow_object_test_03(s: &String) {}

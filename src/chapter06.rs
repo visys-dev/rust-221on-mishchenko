@@ -291,3 +291,341 @@ fn test_slice_02() {
 
     println!("Success! test_slice_02");
 }
+
+#[test]
+
+fn test_slice_03() {
+    let arr: [i32; 5] = [1, 2, 3, 4, 5];
+    // Fill the blanks to make the code work
+    let slice: &[i32] = &arr[1..4];
+    assert_eq!(slice, &[2, 3, 4]);
+
+    println!("Success! test_slice_03");
+}
+
+#[test]
+fn test_slice_04() {
+    let s = String::from("hello");
+
+    let slice1 = &s[0..2];
+    // Fill the blank to make the code work, DON'T USE 0..2 again
+    let slice2 = &s[..2];
+
+    assert_eq!(slice1, slice2);
+
+    println!("Success! test_slice_04");
+}
+
+#[test]
+fn test_slice_05() {
+    let s = "你好，世界";
+    // Modify this line to make the code work
+    let slice = &s[0..3];
+
+    assert!(slice == "你");
+
+    println!("Success! test_slice_05");
+}
+
+#[test]
+
+// Fix errors
+fn test_slice_06() {
+    let mut s = String::from("hello world");
+
+    // Here, &s is `&String` type, but `first_letter` needs a `&str` type.
+    // It works because `&String` can be implicitly converted to `&str. If you want to know more, this is called `Deref coercion`.
+    let letter = first_letter_slice_06(&s);
+
+    println!("the first letter is: {}", letter);
+
+    s.clear(); // error!
+}
+fn first_letter_slice_06(s: &str) -> &str {
+    &s[..1]
+}
+
+//Tuple
+#[test]
+
+fn test_tuple_01() {
+    let _t0: (u8, i16) = (0, -1);
+    // Tuples can be tuple's members
+    let _t1: (u8, (i16, u32)) = (0, (-1, 1));
+    // Fill the blanks to make the code work
+    let t: (u8, u16, i64, &str, String) = (1u8, 2u16, 3i64, "hello", String::from(", world"));
+
+    println!("Success! test_tuple_01");
+}
+
+#[test]
+// Make it work
+fn test_tuple_02() {
+    let t = ("i", "am", "sunface");
+    assert_eq!(t.2, "sunface");
+
+    println!("Success! test_tuple_02");
+}
+
+#[test]
+
+// Fix the error
+fn test_tuple_03() {
+    let too_long_tuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+    println!("too long tuple: {:?}", too_long_tuple);
+}
+
+#[test]
+
+fn test_tuple_04() {
+    let tup = (1, 6.4, "hello");
+
+    // Fill the blank to make the code work
+    let (x, z, y) = tup;
+
+    assert_eq!(x, 1);
+    assert_eq!(y, "hello");
+    assert_eq!(z, 6.4);
+
+    println!("Success! test_tuple_04");
+}
+
+#[test]
+fn test_tuple_05() {
+    let (x, y, z);
+
+    // Fill the blank
+    (y, z, x) = (1, 2, 3);
+
+    assert_eq!(x, 3);
+    assert_eq!(y, 1);
+    assert_eq!(z, 2);
+
+    println!("Success! test_tuple_05");
+}
+
+#[test]
+
+fn test_tuple_06() {
+    // Fill the blank, need a few computations here.
+    let (x, y) = sum_multiply_tuple_06((2, 3));
+
+    assert_eq!(x, 5);
+    assert_eq!(y, 6);
+
+    println!("Success! test_tuple_06");
+}
+
+fn sum_multiply_tuple_06(nums: (i32, i32)) -> (i32, i32) {
+    (nums.0 + nums.1, nums.0 * nums.1)
+}
+
+//Struct
+
+// Fix the error
+struct Person_struct_01 {
+    name: String,
+    age: u8,
+    hobby: String,
+}
+#[test]
+fn test_struct_01() {
+    let age = 30;
+    let p = Person_struct_01 {
+        name: String::from("sunface"),
+        age,
+        hobby: String::from("golf"),
+    };
+
+    println!("Success! test_struct_01");
+}
+
+struct Unit_struct_02;
+trait SomeTrait_struct_02 {
+    // ...Some behavours defines here
+}
+
+// We don't care the the fields are in Unit, but we care its behaviors.
+// So we use a struct with no fields and implement some behaviors for it
+impl SomeTrait_struct_02 for Unit_struct_02 {}
+#[test]
+fn test_struct_02() {
+    let u = Unit_struct_02;
+    do_something_with_unit(u);
+    println!("Success! test_struct_02");
+}
+
+// fill the blank to make the code work
+fn do_something_with_unit(u: Unit_struct_02) {}
+
+// Fix the error and fill the blanks
+// struct Color(i32, i32, i32);
+struct Point_struct_03(i32, i32, i32);
+#[test]
+fn test_struct_03() {
+    let v = Point_struct_03(0, 127, 255);
+    check_color_struct_03(v);
+
+    println!("Success! test_struct_03");
+}
+
+fn check_color_struct_03(p: Point_struct_03) {
+    let Point_struct_03(x, _, _) = p;
+    assert_eq!(x, 0);
+    assert_eq!(p.1, 127);
+    assert_eq!(p.2, 255);
+}
+
+// Fill the blank and fix the error without adding/removing new line
+struct Person_struct_04 {
+    name: String,
+    age: u8,
+}
+#[test]
+fn test_struct_04() {
+    let age = 18;
+    let mut p = Person_struct_04 {
+        name: String::from("sunface"),
+        age,
+    };
+
+    // How can you believe sunface is only 18?
+    p.age = 30;
+
+    // Fill the blank
+    p.name = String::from("sunfei");
+
+    println!("Success! test_struct_04");
+}
+
+// Fill the blank
+struct Person_struct_05 {
+    name: String,
+    age: u8,
+}
+#[test]
+fn test_struct_05() {
+    println!("Success! test_struct_05");
+}
+
+fn build_person_struct_05(name: String, age: u8) -> Person_struct_05 {
+    Person_struct_05 { age, name }
+}
+
+// Fill the blank to make the code work
+struct User_struct_06 {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+#[test]
+fn test_struct_06() {
+    let u1 = User_struct_06 {
+        email: String::from("someone@example.com"),
+        username: String::from("sunface"),
+        active: true,
+        sign_in_count: 1,
+    };
+
+    let u2 = set_email_struct_06(u1);
+
+    println!("Success! test_struct_06");
+}
+
+fn set_email_struct_06(u: User_struct_06) -> User_struct_06 {
+    User_struct_06 {
+        email: String::from("contact@im.dev"),
+        ..u
+    } //Приймає всі поля з (u), крім явновказанного (email)
+}
+
+//Enum
+
+// Fix the errors
+enum Number_enum_01 {
+    Zero,
+    One,
+    Two,
+}
+
+enum Number1_enum_01 {
+    Zero = 0,
+    One,
+    Two,
+}
+
+// C-like enum
+enum Number2_enum_01 {
+    Zero = 0,
+    One = 1,
+    Two = 2,
+}
+
+#[test]
+fn test_enum_01() {
+    // An enum variant can be converted to a integer by `as`
+    assert_eq!(Number_enum_01::One as u8, Number_enum_01::One as u8);
+    assert_eq!(Number1_enum_01::One as u8, Number2_enum_01::One as u8);
+
+    println!("Success! test_enum_01");
+}
+
+// Fill in the blank
+enum Message_enum_02 {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+#[test]
+fn test_enum_02() {
+    let msg1 = Message_enum_02::Move { x: 1, y: 2 }; // Instantiating with x = 1, y = 2
+    let msg2 = Message_enum_02::Write(String::from("hello, world")); // Instantiating with "hello, world!"
+
+    println!("Success! test_enum_02");
+}
+
+// Fill in the blank and fix the error
+enum Message_enum_03 {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+#[test]
+fn test_enum_03() {
+    let msg = Message_enum_03::Move { x: 1, y: 1 };
+
+    if let Message_enum_03::Move { x: a, y: b } = msg {
+        assert_eq!(a, b);
+    } else {
+        panic!("NEVER LET THIS RUN！");
+    }
+
+    println!("Success! test_enum_03");
+}
+
+#[test]
+// Fill in the blank to make the `println` work.
+// Also add some code to prevent the `panic` from running.
+fn test_enum_05() {
+    let five = Some(5);
+    let six = plus_one_enum_05(five);
+    let none = plus_one_enum_05(None);
+
+    if let Some(n) = six {
+        println!("{}", n);
+
+        println!("Success! test_enum_05");
+    } else {
+        panic!("NEVER LET THIS RUN！");
+    }
+}
+
+fn plus_one_enum_05(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i + 1),
+    }
+}

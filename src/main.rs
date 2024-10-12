@@ -4,6 +4,7 @@ mod chapter04;
 mod chapter05;
 mod chapter06;
 mod chapter07;
+mod algorithms;
 
 fn main() {
     println!("Hello, world!");

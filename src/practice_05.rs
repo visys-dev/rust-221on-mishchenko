@@ -1,6 +1,6 @@
 #[test]
 fn test_pr_05() {
-    const W: u32 = 20;
+    const W: u32 = 22;
     const H: u32 = 12;
 
     for y in 0..H {
@@ -10,7 +10,10 @@ fn test_pr_05() {
             let is_first_diagonal = x == (y * W) / H;
             let is_second_diagonal = x == (H - 1 - y) * W / H;
 
-            let c = if is_horizontal || is_vertical || is_first_diagonal || is_second_diagonal {
+            let c = if is_horizontal
+                || is_vertical
+                || is_first_diagonal
+                || is_second_diagonal {
                 '*'
             } else {
                 ' '

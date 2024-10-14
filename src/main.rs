@@ -6,6 +6,7 @@ mod chapter07;
 // mod hackerrank;
 mod practice_04;
 mod practice_05;
+mod practice_06;
 
 fn main() {
     println!("Hello, world!");

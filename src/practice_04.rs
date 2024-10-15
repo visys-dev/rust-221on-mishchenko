@@ -1,7 +1,7 @@
 // Практична робота №4 (Малювання ромба)
 #[test]
 fn test_01() {
-    const SIZE: u8 = 21;
+    const SIZE: u8 = 15;
     let half = SIZE / 2;
 
     let mirror = |a: u8| -> u8 { SIZE - 1 - a };

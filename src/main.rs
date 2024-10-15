@@ -3,7 +3,7 @@ mod chapter04;
 mod chapter05;
 mod chapter06;
 mod chapter07;
-// mod hackerrank;
+// mod hackerrank_algorithms;
 mod practice_04;
 mod practice_05;
 mod practice_06;

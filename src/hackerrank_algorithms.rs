@@ -476,4 +476,34 @@ fn main() {
     writeln!(&mut fptr, "{}", result).ok();
 }
 
+// #11 Apple and Orange
+fn countApplesAndOranges(s: i32, t: i32, a: i32, b: i32, apples: &[i32], oranges: &[i32]) {
+    let mut apples_on_house = 0;
+    let mut oranges_on_house = 0;
+
+    for &distance in apples {
+        let position = a + distance;
+        if position >= s && position <= t {
+            apples_on_house += 1;
+        }
+    }
+
+
+    for &distance in oranges {
+        let position = b + distance;
+        if position >= s && position <= t {
+            oranges_on_house += 1;
+        }
+    }
+
+    println!("{}", apples_on_house);
+    println!("{}", oranges_on_house);
+
+}
+
+
+
+
+
+
 

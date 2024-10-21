@@ -1,8 +1,8 @@
 // Практична робота №5 (Малювання конверта)
 #[test]
 fn test_01() {
-    const W: u32 = 25;
-    const H: u32 = 12;
+    const W: u32 = 30;
+    const H: u32 = 15;
 
     for y in 0..H {
         for x in 0..W {

@@ -11,6 +11,8 @@ mod practice_07;
 mod practice_08;
 mod practice_09;
 mod practice_10;
+mod practice_11;
+mod practice_12;
 
 fn main() {
     println!("Hello, world!");

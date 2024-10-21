@@ -15,6 +15,6 @@ fn draw_christmas_tree(triangles: usize) {
 
 #[test]
 fn test_01() {
-    let tree_size = 4;
+    let tree_size = 5;
     draw_christmas_tree(tree_size);
 }

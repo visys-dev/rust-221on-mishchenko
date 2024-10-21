@@ -3,3 +3,6 @@
 /.idea/vcs.xml
 /target/debug/.cargo-lock
 /target/.rustc_info.json
+/target/
+/.idea
+/.idea/.gitignore

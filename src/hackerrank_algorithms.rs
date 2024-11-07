@@ -625,6 +625,60 @@ fn bonAppetit(bill: &[i32], k: i32, b: i32) {
 }
 
 
+// #18 Sales by Match
+fn sockMerchant(n: i32, ar: &[i32]) -> i32 {
+    let max_color = ar.iter().copied().max().unwrap_or(0);
+    let mut color_count = vec![0; (max_color + 1) as usize];
+
+    for &sock in ar {
+        color_count[sock as usize] += 1;
+    }
+
+    let mut pairs = 0;
+    for &count in color_count.iter() {
+        pairs += count / 2;
+    }
+
+    pairs
+}
+
+
+// #19 Drawing Book
+fn pageCount(n: i32, p: i32) -> i32 {
+    let from_front = p / 2;
+    
+    let from_back = (n / 2) - (p / 2);
+    
+    if from_front < from_back {
+        from_front
+    } else {
+        from_back
+    }
+}
+
+// #20 Counting Valleys
+fn countingValleys(steps: i32, path: &str) -> i32 {
+    let mut n = 0;
+    let mut p = 0;
+
+    for c in path.chars() {
+        let l = match c {
+            'U' => p + 1,
+            'D' => p - 1,
+            _ => continue,
+        };
+        if l == 0 && p < 0 {
+            n += 1;
+        }
+        p = l;
+    }
+
+    n
+}
+
+
+
+
 
 
 

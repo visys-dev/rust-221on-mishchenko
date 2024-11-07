@@ -580,6 +580,50 @@ fn migratoryBirds(arr: &[i32]) -> i32 {
 }
 
 
+// #16 Day Of the Programmer
+fn dayOfProgrammer(year: i32) -> String {
+    fn is_julian_leap_year(year: i32) -> bool {
+        year % 4 == 0
+    }
+
+    fn is_gregorian_leap_year(year: i32) -> bool {
+        (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)
+    }
+
+    if year == 1918 {
+        return format!("26.09.1918");
+    } else if year < 1918 {
+        if is_julian_leap_year(year) {
+            return format!("12.09.{}", year);
+        } else {
+            return format!("13.09.{}", year);
+        }
+    } else {
+        if is_gregorian_leap_year(year) {
+            return format!("12.09.{}", year);
+        } else {
+            return format!("13.09.{}", year);
+        }
+    }
+}
+
+
+// #17 Bill Division
+fn bonAppetit(bill: &[i32], k: i32, b: i32) {
+    let total_cost: i32 = bill.iter().enumerate()
+        .filter(|(index, _)| *index as i32 != k)
+        .map(|(_, &price)| price)
+        .sum();
+
+    let anna_share = total_cost / 2;
+
+    if b == anna_share {
+        println!("Bon Appetit");
+    } else {
+        println!("{}", b - anna_share);
+    }
+}
+
 
 
 

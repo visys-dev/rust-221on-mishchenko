@@ -501,6 +501,85 @@ fn countApplesAndOranges(s: i32, t: i32, a: i32, b: i32, apples: &[i32], oranges
 
 }
 
+// #12 Breaking The Records
+fn breaking_records(scores: &[i32]) -> Vec<i32> {
+    let mut min_score = scores[0];
+    let mut max_score = scores[0];
+    let mut min_count = 0;
+    let mut max_count = 0;
+
+    for &score in scores.iter().skip(1) {
+        if score > max_score {
+            max_score = score;
+            max_count += 1;
+        } else if score < min_score {
+            min_score = score;
+            min_count += 1;
+        }
+    }
+
+    vec![max_count, min_count]
+}
+
+
+// #13 Subarray Division
+fn birthday(s: &[i32], d: i32, m: i32) -> i32 {
+    if m as usize > s.len() {
+        return 0;
+    }
+
+    let mut count = 0;
+
+    for i in 0..=(s.len() - m as usize) {
+        let sum: i32 = s[i..i + m as usize].iter().sum();
+        
+        if sum == d {
+            count += 1;
+        }
+    }
+
+    count
+
+}
+
+// #14 Divisible Sum Pairs
+fn divisibleSumPairs(n: i32, k: i32, ar: &[i32]) -> i32 {
+    let mut count = 0;
+    
+    for i in 0..(n - 1) {
+        for j in (i + 1)..n {
+            if (ar[i as usize] + ar[j as usize]) % k == 0 {
+                count += 1;
+            }
+        }
+    }
+
+    count
+    
+}
+
+// #15 Migratory Birds
+fn migratoryBirds(arr: &[i32]) -> i32 {
+    let mut types = vec![0; 5];
+    
+    for &bird in arr {
+        types[(bird - 1) as usize] += 1;
+    }
+    
+    let mut max_freq_value = 0;
+    let mut freq_id = 0;
+
+    for (i, &count) in types.iter().enumerate() {
+        if count > max_freq_value {
+            max_freq_value = count;
+            freq_id = (i + 1) as i32;
+        }
+    }
+
+    freq_id
+}
+
+
 
 
 
